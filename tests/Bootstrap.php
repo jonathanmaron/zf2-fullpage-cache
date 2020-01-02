@@ -18,7 +18,7 @@
 
 namespace StrokerCacheTest;
 
-use Zend\Loader\AutoloaderFactory;
+use Laminas\Loader\AutoloaderFactory;
 use RuntimeException;
 
 error_reporting(E_ALL);
@@ -50,15 +50,15 @@ class Bootstrap
         }
 
         if (isset($loader)) {
-            $loader->add('Zend', $zf2Path . '/Zend');
+            $loader->add('Laminas', $zf2Path . '/Laminas');
         } else {
-            include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
-            include $zf2Path . '/Zend/Loader/ClassMapAutoloader.php';
+            include $zf2Path . '/Laminas/Loader/AutoloaderFactory.php';
+            include $zf2Path . '/Laminas/Loader/ClassMapAutoloader.php';
             AutoloaderFactory::factory(array(
-                'Zend\Loader\ClassMapAutoloader' => array(array(
+                'Laminas\Loader\ClassMapAutoloader' => array(array(
                     'StrokerCache\Module' => __DIR__ . '/../Module.php',
                 )),
-                'Zend\Loader\StandardAutoloader' => array(
+                'Laminas\Loader\StandardAutoloader' => array(
                     'autoregister_zf' => true,
                     'namespaces' => array(
                         'StrokerCache' => __DIR__ . '/../src/StrokerCache',
